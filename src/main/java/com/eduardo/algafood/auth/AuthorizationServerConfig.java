@@ -34,6 +34,15 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.scopes("write", "read")
 				.accessTokenValiditySeconds(60 * 60 * 6)
 				.refreshTokenValiditySeconds(60 * 24 * 60 * 60)
+			
+			.and()
+			
+				.withClient("foodanalytics")
+				.secret(passwordEncoder.encode("food123"))
+				.authorizedGrantTypes("authorization_code")
+				.scopes("write", "read")
+				.redirectUris("http://aplicacao-cliente")
+				
 			.and()
 			
 				.withClient("faturamento")
