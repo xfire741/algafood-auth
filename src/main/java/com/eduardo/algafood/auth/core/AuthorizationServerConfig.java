@@ -1,4 +1,4 @@
-package com.eduardo.algafood.auth;
+package com.eduardo.algafood.auth.core;
 
 import java.util.Arrays;
 
