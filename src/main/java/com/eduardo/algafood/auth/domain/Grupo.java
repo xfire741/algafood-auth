@@ -1,7 +1,7 @@
 package com.eduardo.algafood.auth.domain;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,11 +15,11 @@ import javax.persistence.ManyToMany;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class Usuario {
-
+public class Grupo {
+	
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +28,11 @@ public class Usuario {
 	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false)
-	private String email;
-	
-	@Column(nullable = false)
-	private String senha;
-	
 	@ManyToMany
-	@JoinTable(name = "usuario_grupo", joinColumns = @JoinColumn(name = "usuario_id"),
-			inverseJoinColumns = @JoinColumn(name = "grupo_id"))
-	private Set<Grupo> grupos = new HashSet<>();
+	@JoinTable(name = "grupo_permissao",
+	joinColumns = @JoinColumn(name = "grupo_id"),
+	inverseJoinColumns = @JoinColumn(name = "permissao_id"))
+	private List<Permissao> permissoes = new ArrayList<>();
+
 	
 }
